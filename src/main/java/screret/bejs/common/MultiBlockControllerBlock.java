@@ -64,7 +64,16 @@ public class MultiBlockControllerBlock extends BasicBlockJS {
     public static class Builder extends BlockBuilder {
         public transient MultiBlockBuilder multiBlockBuilder;
 
+        public Builder defaultValues(Consumer<CompoundTag> consumer) {
+            multiBlockBuilder = (MultiBlockBuilder) getOrCreateBlockEntityTypeBuilder().defaultValues(consumer);
+            return this;
+        }
 
+        public Builder itemHandler(int capacity) {
+            multiBlockBuilder = (MultiBlockBuilder) getOrCreateBlockEntityTypeBuilder().itemHandler(1);
+            return this;
+        }
+        
         public Builder(ResourceLocation i) {
             super(i);
             multiBlockBuilder = getOrCreateBlockEntityTypeBuilder();
